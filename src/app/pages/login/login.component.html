@@ -1,0 +1,84 @@
+<body>
+    
+    <div class="divPanel">
+        <div class="panel flex-row-reverse">
+
+            <div class="white-panel">
+
+
+                <div class="login-show">
+
+                    <form [formGroup]="formLogin" style="height: 100%">
+
+
+                        <div>
+                            <div style="margin-left: 10%">
+                                <div id="logo" class="card-logo"></div>
+                                <div class="textLogin">
+                                    <h4>{{'login.loginTitle'|translate}}</h4>
+                                </div>
+                            </div>
+
+                            <div class="input-group form-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+
+                                    <input type="text" formControlName="email" class="form-control"
+                                        placeholder="{{'placeholder.email'|translate}}">
+
+                                </div>
+                            </div>
+                            <div class="errorMessage"> {{ getError('email') |translate}}</div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+
+                                    <input type="password" formControlName="password" class="form-control"
+                                        placeholder="{{'placeholder.password'|translate}}">
+                                </div>
+                            </div>
+                            <div class="errorMessage">{{ getError('password')  |translate}}</div>
+                        </div>
+                        <div class="form-group divbutton ">
+                            <button (click)="login()" [disabled]="formLogin.invalid"
+                                class="btn login_btn ">{{'login.login' | translate}}</button>
+
+                            <div class="textLogin">{{'login.or' | translate}}</div>
+                            <div class="d-flex justify-content-end social_icon">
+                                <span><i class="fab fa-facebook-square fa-2x"></i></span>
+                                <span><i class="fab fa-google-plus-square fa-2x"></i></span>
+                                <span><i class="fab fa-linkedin fa-2x"></i></span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="login-info-box">
+                <h3>
+                    {{'login.noTienesUnaCuena' | translate}}
+                </h3>
+                <div>
+                    <button routerLink="/register" class="btn login_btn ">{{'login.signIn' | translate}}</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="alignLanguage">
+            <i class="fas fa-globe" style="margin-left: 5px; margin-right: 5px;"></i>
+            <mat-form-field style="width: 50px;">
+                <mat-select [(ngModel)]="selectedLanguage" name="selectedLanguage" position="above">
+                    <mat-option value="es" (click)="changeLanguage('es')">
+                        (es)
+                    </mat-option>
+                    <mat-option value="en" (click)="changeLanguage('en')">
+                        (en)
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+    </div>
+</body>
+ 
