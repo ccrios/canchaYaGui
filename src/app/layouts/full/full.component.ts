@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FullComponent implements OnInit {
 
-  constructor() { }
+  opened: boolean;
+  constructor() {
+    this.opened = true;
+   }
 
   ngOnInit() {
   }

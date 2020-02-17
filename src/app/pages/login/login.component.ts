@@ -62,13 +62,13 @@ constructor(
       const { minlength } = control.errors;
       const { email } = control.errors;
       if (required) {
-        errorMessage = 'register.requiredField';
+        errorMessage = 'Campo requerido';
       }
       if (minlength) {
-        errorMessage = 'register.minumumCharacters';
+        errorMessage = 'Minimo 8 caracteres';
       }
       if (email) {
-        errorMessage = 'register.invalidEmail';
+        errorMessage = 'Email invalido';
       }
       // console.log(control.errors);
     }
