@@ -16,13 +16,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { AlertModule } from 'ngx-alerts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { materialModule } from 'src/app/material.module';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContenComponent,
     FullComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { CONTENT_ROUTES } from './routes/content.routes';
 import { FULL_ROUTES } from './routes/full.routes';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthRoleUserGuard } from './guards/auth-role-user.guard';
+import { TestComponent } from './components/test/test.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'not-found',
     component: NotFoundComponent
+  },
+
+  {
+    path: 'test',
+    component: TestComponent
   },
 
   {
