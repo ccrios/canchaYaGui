@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-import { ContenComponent } from './layouts/conten/conten.component';
+import { ContentComponent } from './layouts/content/content.component';
 import { FullComponent } from './layouts/full/full.component';
 
 import { CONTENT_ROUTES } from './routes/content.routes';
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: ContenComponent,
+    component: ContentComponent,
     children: CONTENT_ROUTES,
   },
 

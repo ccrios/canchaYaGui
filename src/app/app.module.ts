@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ContenComponent } from './layouts/conten/conten.component';
+import { ContentComponent } from './layouts/content/content.component';
 import { FullComponent } from './layouts/full/full.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -21,7 +21,7 @@ import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ContenComponent,
+    ContentComponent,
     FullComponent,
     NotFoundComponent,
     TestComponent
