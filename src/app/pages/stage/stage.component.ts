@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    localStorage.setItem('account_id', '2');
+  }
 
   ngOnInit() {
   }

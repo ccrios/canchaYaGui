@@ -1,0 +1,81 @@
+<!--Editar Cancha-->
+<div *ngIf="editable" class="container global_container">
+    <mat-card class="mat-elevation-z2">
+        <mat-card-title style="text-align: center;">Editar Cancha</mat-card-title>
+        <mat-card-content>
+            <form role="form-group form" [formGroup]="stageForm" method="post" class="f1" name="stageForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="name" placeholder="Nombre">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="descripcion" placeholder="Descripción">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>Ancho</mat-label>
+                            <input matInput formControlName="width" placeholder="Ancho (m)">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="heigth" placeholder="Alto (m)">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end;">
+                    <button type="button" class="btn btn-success" (click)="createStage()">
+                        Crear
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!--Crear Cancha-->
+<div *ngIf="!editable" class="container global_container">
+    <mat-card class="mat-elevation-z2">
+        <mat-card-title style="text-align: center;">Crear Cancha Nueva</mat-card-title>
+        <mat-card-content>
+            <form role="form-group form" [formGroup]="stageForm" method="post" class="f1" name="stageForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="name" placeholder="Nombre">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="descripcion" placeholder="Descripción">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>Ancho</mat-label>
+                            <input matInput formControlName="width" placeholder="Ancho (m)">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="heigth" placeholder="Alto (m)">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end;">
+                    <button type="button" class="btn btn-success" (click)="createStage()">
+                        Crear
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

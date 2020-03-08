@@ -11,6 +11,18 @@ export const FULL_ROUTES: Routes = [
         loadChildren: './pages/stage/stage.module#StageModule'
     },
     {
+        path: 'create-stage',
+        loadChildren: './components/stages-form/stages-form.module#StagesFormModule'
+    },
+    {
+        path: 'edit-stage/:id',
+        loadChildren: './components/stages-form/stages-form.module#StagesFormModule'
+    },
+    {
+        path: 'list-stages',
+        loadChildren: './components/list-stages/list-stages.module#ListStagesModule'
+    },
+    {
         path: 'tournaments',
         loadChildren: './pages/tournament/tournament.module#TournamentModule'
     },
