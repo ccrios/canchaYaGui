@@ -1,0 +1,44 @@
+
+<div class="container">
+  <div id = "divViewTournamentNoStarting">
+    <h2>Pendientes de iniciar: </h2>
+    <mat-table [dataSource]="viewTournaments">
+      <ng-container  matColumnDef="tournament_id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.tournament_id}}</mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="tournament_name">
+        <mat-header-cell *matHeaderCellDef>Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.tournament_name}}</mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="init_date">
+        <mat-header-cell *matHeaderCellDef>Fecha Inicio</mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.init_date}}</mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="quantity_team">
+        <mat-header-cell *matHeaderCellDef>Cantidad Equipos</mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.quantity_team}}</mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="registration_payment">
+        <mat-header-cell *matHeaderCellDef>Costo inscripcion</mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.registration_payment}}</mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="tournament_prize">
+        <mat-header-cell *matHeaderCellDef>Premio</mat-header-cell>
+        <mat-cell *matCellDef="let tournament">{{tournament.tournament_prize}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tournamentColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tournamentColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions] = "[5,10]" showFirstLastButtons></mat-paginator>
+
+    <button mat-raised-button id="logout-button" (click)="openModal()">+</button>
+
+  </div>
+  <div id = "divViewTournamentActives">
+    <h2>En proceso: </h2>
+
+
+    </div>
+
+</div>
