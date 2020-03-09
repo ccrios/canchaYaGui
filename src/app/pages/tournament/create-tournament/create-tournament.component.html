@@ -1,0 +1,48 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header" style="display: inline;">
+
+    <div>
+      <button mat-raised-button class="close" id = "close-button" aria-label="Cerrar" (click)="closeModal()">X</button>
+    </div>
+    <div  >
+      <h1 id="modal-title">Crear nuevo torneo</h1>
+    </div>
+    </header>
+    <section id="modal-body">
+    <form [formGroup]="formCreateTournament" class="form" (ngSubmit)="createTournament()">
+
+        <div class="form-group">
+          <label for="tournamentName">Nombre del torneo:</label>
+          <input type="text" formControlName="tournamentName" placeholder="tournamentName" name="tournamentName" class="form-control" id="tournamentName">
+        </div>
+
+        <div class="form-group">
+          <label for="quantityTeam">Cantidad de equipos:</label>
+          <select formControlName="quantityTeam" name="quantityTeam" class="form-control" id="quantityTeam">
+          <option >Quantity team:</option>
+          <option *ngFor="let quantityTeam of teamsOptions" >{{quantityTeam}}</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+          <label for="registrationPayment">Costo de inscripcion:</label>
+          <input type="number" formControlName="registrationPayment" placeholder="registrationPayment" name="registrationPayment" class="form-control" id="registrationPayment">
+          </div>
+
+          <div class="form-group">
+            <label for="tournamentPrize">Dinero premio:</label>
+            <input type="number" formControlName="tournamentPrize" placeholder="tournamentPrize" name="tournamentPrize" class="form-control" id="tournamentPrize">
+          </div>
+        <div class="form-group">
+          <label for="initDate">Fecha de inicio:</label>
+          <input type="date" formControlName="initDate" placeholder="initDate" name="initDate" class="form-control" id="initDate">
+        </div>
+        <button type="submit" mat-button mat-raised-button color="grey" >Crear Torneo</button>
+        
+    </form>
+
+
+  </section>
+  <footer id="modal-footer">
+  </footer>
+</div>

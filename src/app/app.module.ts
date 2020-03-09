@@ -17,6 +17,8 @@ import { AlertModule } from 'ngx-alerts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { materialModule } from 'src/app/material.module';
 import { TestComponent } from './components/test/test.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { TestComponent } from './components/test/test.component';
     HttpClientModule,
     BrowserAnimationsModule,
     materialModule,
+     MatTableModule ,
     FormsModule,
     ReactiveFormsModule,
 

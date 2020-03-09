@@ -2,10 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const FULL_ROUTES: Routes = [
 
-    {
-        path: 'test',
-        loadChildren: './pages/login/login.module#LoginModule'
-    },
+
     {
         path: 'stages',
         loadChildren: './pages/stage/stage.module#StageModule'
@@ -26,6 +23,10 @@ export const FULL_ROUTES: Routes = [
         path: 'tournaments',
         loadChildren: './pages/tournament/tournament.module#TournamentModule'
     },
+    {
+      path: 'createTournaments',
+      loadChildren: './pages/tournament/create-tournament/create-tournament.module#CreateTournamentModule'
+      },
     {
         path: 'schedules',
         loadChildren: './pages/schedule/schedule.module#ScheduleModule'
