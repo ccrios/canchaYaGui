@@ -8,16 +8,21 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private myRoute: Router) { }
   sendInfo(data) {
-    localStorage.setItem('info_user' , JSON.stringify(data[ 'user' ]));
+    localStorage.setItem('account' , JSON.stringify(data['Account'][ 'Account' ]));
+    localStorage.setItem('token' , JSON.stringify(data['Account'][ 'token' ]));
   }
   getInfo() {
-    return localStorage.getItem('info_user');
+    return JSON.parse(localStorage.getItem('account'));
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
   }
   isLoggednIn() {
     return (this.getInfo() !== null);
   }
   logout() {
-    localStorage.removeItem('info_user');
+    localStorage.removeItem('account');
     this.myRoute.navigate(["login"]);
   }
 

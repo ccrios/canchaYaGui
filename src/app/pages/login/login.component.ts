@@ -30,27 +30,8 @@ constructor(
   ngOnInit() {
     this.formLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
-    this.selectedLanguage = this.languageService.getCurrentLanguage();
-    this.changeLogo(this.languageService.getCurrentLanguage());
-  }
-
-  public changeLanguage(lang) {
-    this.changeLogo(lang);
-    this.languageService.changeLanguage(lang);
-  }
-
-
-  changeLogo(lang){
-    const logo = document.getElementById('logo');
-    if (lang === 'es') {
-      // tslint:disable-next-line: max-line-length
-      logo.style.backgroundImage = 'url("https://s3.us-east-2.amazonaws.com/s3.provibes/files/static-images/logo+v7+para+fondo+blanco+ES.png")';
-    } else if (lang === 'en') {
-      // tslint:disable-next-line: max-line-length
-      logo.style.backgroundImage = 'url("https://s3.us-east-2.amazonaws.com/s3.provibes/files/static-images/logo+v7+para+fondo+blanco+EN.png")';
-    }
   }
 
   public getError(controlName: string): string {
@@ -65,7 +46,7 @@ constructor(
         errorMessage = 'Campo requerido';
       }
       if (minlength) {
-        errorMessage = 'Minimo 8 caracteres';
+        errorMessage = 'Minimo 3 caracteres';
       }
       if (email) {
         errorMessage = 'Email invalido';
@@ -84,16 +65,14 @@ constructor(
       (data) => { // Success
          if (data['status']) {
           this.auth.sendInfo(data);
-          const user = data['user']['user'];
+          const user = data['Account']['Account'];
           if (user.validate) {
-            this.router.navigate(['market']);
+            this.router.navigate(['']);
            } else {
             this.router.navigate(['validateAccount']);
            }
          } else {
-
-          const traduction = this.languageService.getTranslateOf('login.loginFail');
-          this.alertService.danger(traduction['value']);
+          this.alertService.danger('login fallo');
           this.formLogin.controls['password'].setValue('');
          }
       },

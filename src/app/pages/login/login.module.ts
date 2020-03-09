@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { materialModule } from 'src/app/material.module';
-// import { AlertModule } from 'ngx-alerts';
+import { AlertModule } from 'ngx-alerts';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { materialModule } from 'src/app/material.module';
     ReactiveFormsModule,
     TranslateModule,
     materialModule,
-    // AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
 
   ],
   exports: [

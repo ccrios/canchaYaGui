@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AccountService {
   configService: ConfigService;
 
   constructor(public http: HttpClient) {
@@ -14,10 +14,17 @@ export class LoginService {
   }
 
 
-  postLogin(data) {
+  restorePassword(data) {
     const headers = new HttpHeaders({
         'Content-Type':  'application/json',
       });
-    return this.http.post(this.configService.serverIp.concat('/login'), data, {headers} );
+    return this.http.post(this.configService.serverIp.concat('/chamgePassword'), data, {headers} );
+  }
+
+  requestChangePassword(data) {
+    const headers = new HttpHeaders({
+        'Content-Type':  'application/json',
+      });
+    return this.http.post(this.configService.serverIp.concat('/RestorePasword'), data, {headers} );
   }
 }
