@@ -6,7 +6,6 @@ import { ListStagesComponent } from './list-stages.component';
 import { materialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StageCardModule } from '../stage-card/stage-card.module';
-import { SchedulerModule } from '../scheduler/scheduler.module';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { SchedulerModule } from '../scheduler/scheduler.module';
     materialModule,
     FormsModule,
     ReactiveFormsModule,
-    StageCardModule,
-    SchedulerModule
+    StageCardModule
   ],
   exports: [
     ListStagesComponent

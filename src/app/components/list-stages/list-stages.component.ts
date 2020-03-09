@@ -17,20 +17,12 @@ export class ListStagesComponent implements OnInit {
 
   ngOnInit() {
     this.listStages();
-    this.getStage();
   }
 
   public listStages() {
     this.stageService.listStages().subscribe(res => {
       console.log('entro ');
       this.stages = res['resStages'].stages;
-      console.log(res);
-    });
-  }
-
-  public getStage() {
-    this.stageService.getStage(1).subscribe(res => {
-      console.log('entro al get');
       console.log(res);
     });
   }

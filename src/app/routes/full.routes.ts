@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { DemoComponent } from '../components/demo/demo-module.component';
 
 export const FULL_ROUTES: Routes = [
 
@@ -29,6 +30,8 @@ export const FULL_ROUTES: Routes = [
     {
         path: 'schedules',
         loadChildren: './pages/schedule/schedule.module#ScheduleModule'
+        // loadChildren: './pages/schedule/bootstrap.module#BootstrapModule'
+        // component: DemoComponent
     },
     {
         path: 'reservations',
