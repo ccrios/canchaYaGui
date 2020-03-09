@@ -19,10 +19,10 @@ export const FULL_ROUTES: Routes = [
         path: 'list-stages',
         loadChildren: './components/list-stages/list-stages.module#ListStagesModule'
     },
-    {
-        path: 'tournaments',
-        loadChildren: './pages/tournament/tournament.module#TournamentModule'
-    },
+    // {
+    //     path: 'tournaments',
+    //     loadChildren: './pages/tournament/tournament.module#TournamentModule'
+    // },
     {
       path: 'createTournaments',
       loadChildren: './pages/tournament/create-tournament/create-tournament.module#CreateTournamentModule'
@@ -42,5 +42,9 @@ export const FULL_ROUTES: Routes = [
     {
         path: 'publicity',
         loadChildren: './pages/publicity/publicity.module#PublicityModule'
+    },
+    {
+      path: 'tournaments',
+      loadChildren: './pages/tournament/view-tournament/view-tournament.module#ViewTournamentModule'
     }
 ];
