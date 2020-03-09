@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+@import '~src/styles';
+// $color-green-principal: #87af4b;
+// $color-complementario1: #734BAF ;
+// $color-complementario2:#734BAFb0;
+body {
+  font-family: "Numans", sans-serif;
+  height: 100vh;
+  // background-image: url("http://getwallpapers.com/wallpaper/small-retina/0/6/3/607841.jpg#.XWqSg_m3u5Q.link");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+}
+
+@media screen and (min-width: 601px) {
+  .divPanel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .panel {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 250px;
+    background-color: $color-principal;
+  }
+  .white-panel {
+    background-color: rgba(255, 255, 255, 1);
+    height: 330px;
+    width: 50%;
+    min-width: 260px;
+    margin-right: -20%;
+    box-shadow: 0 0 15px 9px #00000096;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-info-box {
+    width: 20%;
+    margin: 10px;
+    text-align: left;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .divPanel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .panel {
+    color: white;
+    width: 80%;
+    height: 440px;
+    background-color: #87af4bfe;
+    margin-right: 5%;
+  }
+  .white-panel {
+    background-color: rgba(255, 255, 255, 1);
+    height: 330px;
+    width: 95%;
+    min-width: 260px;
+    box-shadow: 0 0 15px 9px #00000096;
+    margin-left: 10%;
+    margin-top: -10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-info-box {
+    width: 100%;
+    text-align: right;
+    float: right;
+    margin: 10px;
+  }
+}
+
+.input-group-prepend {
+  width: 100%;
+  //max-width: 260px;
+}
+
+.input-group-prepend span {
+  width: 50px;
+  background-color: $color-complementario2;
+  color: white;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+  color: rgb(255, 255, 255);
+  background-color: $color-complementario1;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: #fcfcfc;
+}
+
+.login_btn:disabled {
+  color: white;
+  background-color: $color-complementario2;
+}
+
+
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+.divbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorMessage {
+  width: auto;
+  height: 12px;
+  margin-bottom: 5;
+  font-size: 12px;
+  color: red;
+  // background-color: rgba(255, 0, 140, 0.233);
+}
+
+.social_icon span {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.textLogin {
+  color: $color-complementario1;
+  text-size-adjust: inherit;
+  margin-right: 5px;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.login-show {
+  margin: 10px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+}
+
+.card-logo {
+  //background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 150px;
+  height: 90px;
+  // margin-left: -10%;
+  // margin-top: -25%;
+}
+
+.alignLanguage{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}

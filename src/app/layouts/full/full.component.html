@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>CanchaYA!</h1>
+    <span class="menu-spacer"></span>
+    <!-- <div>
+      <a mat-button [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-button [routerLink]="'/activities'"> Activities </a>
+      <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+
+    </div> -->
+  </mat-toolbar-row>
+
+  <!-- <mat-toolbar-row>
+      <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+  </mat-toolbar-row> -->
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <mat-nav-list>
+      <!-- <button mat-menu-item [matMenuTriggerFor]="aboveMenu" style="font-size: large">Canchas</button>
+      <mat-menu #aboveMenu="matMenu" yPosition="below">
+        <button mat-menu-item style="font-size: large" routerLink="/create-stage">Crear Cancha</button>
+        <button mat-menu-item style="font-size: large" routerLink="/list-stages">Listar Canchas</button>
+      </mat-menu>
+      <button mat-menu-item [matMenuTriggerFor]="belowMenu" style="font-size: large">Torneros</button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item style="font-size: large" routerLink="/tournaments">Crear Torneo</button>
+        <button mat-menu-item style="font-size: large" routerLink="/tournaments">Listar Torneos</button>
+      </mat-menu> -->
+      <a mat-list-item style="font-size: large" [routerLink]="'/list-stages'"> Canchas </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/tournaments'"> Torneos </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/schedules'"> Horarios </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/reservations'"> Reservas </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/profile'"> Editar Perfil </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/publicity'"> Publicidad </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
