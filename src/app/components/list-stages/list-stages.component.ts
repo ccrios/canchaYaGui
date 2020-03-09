@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StageService } from 'src/app/services/stage.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-stages',
@@ -8,12 +8,12 @@ import { StageService } from 'src/app/services/stage.service';
   styleUrls: ['./list-stages.component.scss']
 })
 export class ListStagesComponent implements OnInit {
-
-  editable: boolean;
-
   public stages = new Array();
+  currentDetailsStage: any;
 
-  constructor(private stageService: StageService) { }
+  constructor(private stageService: StageService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.listStages();
@@ -21,10 +21,14 @@ export class ListStagesComponent implements OnInit {
 
   public listStages() {
     this.stageService.listStages().subscribe(res => {
-      console.log('entro ');
-      this.stages = res['resStages'].stages;
-      console.log(res);
+      if (res['status']) {
+        this.stages = res['resStages'].stages;
+      }
     });
   }
 
+  createStage() {
+    this.router.navigate(['/create-stage']);
+  }
 }
+

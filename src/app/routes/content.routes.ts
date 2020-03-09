@@ -4,7 +4,7 @@ export const CONTENT_ROUTES: Routes = [
 
       {
         path: 'login',
-        loadChildren: './pages/login/login.module#LoginModule'
+        loadChildren: () => import('../pages/login/login.module').then(m => m.LoginModule)
       },
       {
         path: '',
