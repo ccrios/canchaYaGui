@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class FullComponent implements OnInit {
 
   opened: boolean;
+  id: string;
+
   constructor() {
+    localStorage.setItem('account_id', '1');
     this.opened = true;
+    this.id = localStorage.getItem('account_id');
    }
 
   ngOnInit() {
