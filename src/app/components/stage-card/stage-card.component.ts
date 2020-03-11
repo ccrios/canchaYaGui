@@ -45,6 +45,8 @@ export class StageCardComponent implements OnInit {
 
   viewSchedule() {
     if (this.id !== undefined) {
+
+      console.log(`/schedule/${this.id}`);
       this.router.navigate([`/schedule/${this.id}`]);
     }
   }

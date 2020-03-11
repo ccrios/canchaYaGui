@@ -35,7 +35,7 @@ export const FULL_ROUTES: Routes = [
         loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
     },
     {
-        path: 'schedules/:id',
+        path: 'schedule/:id',
         loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
     },
     {

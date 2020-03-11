@@ -12,13 +12,12 @@
       {{description}}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="getStage(this.id,content)">Ver</button>
-    <button mat-button (click)='editStage()'>Editar</button>
-    <button mat-button (click)='viewSchedule()'>Horario</button>
-  </mat-card-actions>
+    <div class="row">
+      <button mat-button class="col-lg-4" (click)="getStage(this.id,content)">Ver</button>
+      <button mat-button class="col-lg-4" (click)='editStage()'>Editar</button>
+      <button mat-button class="col-lg-4" (click)='viewSchedule()'>Horario</button>
+    </div>
 </mat-card>
-
 
 <ng-template #content let-modal>
   <div class="modal-header">
