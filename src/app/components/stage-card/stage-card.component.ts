@@ -43,6 +43,12 @@ export class StageCardComponent implements OnInit {
     });
   }
 
+  viewSchedule() {
+    if (this.id !== undefined) {
+      this.router.navigate([`/schedule/${this.id}`]);
+    }
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
