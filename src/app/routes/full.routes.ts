@@ -35,6 +35,10 @@ export const FULL_ROUTES: Routes = [
         loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
     },
     {
+        path: 'schedules/:id',
+        loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
+    },
+    {
         path: 'reservations',
         loadChildren: () => import('../pages/reservation/reservation.module').then(m => m.ReservationModule)
     },

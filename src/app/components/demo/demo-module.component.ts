@@ -22,6 +22,10 @@ import {
     CalendarEventTimesChangedEvent,
     CalendarView
 } from 'angular-calendar';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { OccupationService } from 'src/app/services/occupation.service';
+import { AlertService } from 'ngx-alerts';
 
 const colors: any = {
     red: {
@@ -121,7 +125,67 @@ export class DemoComponent {
 
     activeDayIsOpen: boolean = true;
 
-    constructor(private modal: NgbModal) { }
+
+    id: any;
+    public occupationForm: FormGroup;
+    constructor(private modal: NgbModal,
+        private activatedRoute: ActivatedRoute,
+        private formBuilder: FormBuilder,
+        private occupationService: OccupationService,
+        private alert: AlertService) {
+        this.activatedRoute.params.subscribe(params => {
+            this.id = params.id;
+            if (this.id !== undefined) {
+                console.log(this.id);
+                this.initForm();
+            }
+        });
+        this.createOccupation();
+    }
+
+    createOccupation() {
+        this.occupationService.createOccupation(this.occupationForm.value).subscribe(res => {
+            console.log('entre a crear');
+            console.log(res);
+            if (res['status']) {
+                this.alert.success('Ocupación creada exitosamente!!!');
+                // console.log(res);
+            } else {
+                this.alert.danger('Error al crear ocupación!!!');
+            }
+        });
+    }
+
+    public listOccupations() {
+        this.occupationService.listOccupations(this.id).subscribe(res => {
+            if (res['status']) {
+                console.log(res);
+            }
+        });
+    }
+
+    public deleteOccupation(idToDelete) {
+        this.occupationService.listOccupations(idToDelete).subscribe(res => {
+            if (res['status']) {
+                console.log(res);
+            }
+        });
+    }
+
+    initForm() {
+        this.occupationForm = this.formBuilder.group({
+            description: ['Juego de eliminatoria', Validators.required],
+            reservation_type: ['Privada', Validators.required],
+            reservation_status: ['Activa', Validators.required],
+            team1_id: [2, Validators.required],
+            team2_id: [1, Validators.required],
+            game_type: ['Multi', Validators.required],
+            start: [new Date().toISOString(), Validators.required],
+            end: [addDays(endOfMonth(new Date()), 3).toISOString(), Validators.required],
+            occupation_type: ['Jugar', Validators.required],
+            stage_id: [this.id]
+        });
+    }
 
     dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
         if (isSameMonth(date, this.viewDate)) {
@@ -153,11 +217,13 @@ export class DemoComponent {
             return iEvent;
         });
         this.handleEvent('Dropped or resized', event);
+
     }
 
     handleEvent(action: string, event: CalendarEvent): void {
         this.modalData = { event, action };
         this.modal.open(this.modalContent, { size: 'lg' });
+        console.log(this.events);
     }
 
     addEvent(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StageService } from 'src/app/services/stage.service';
 import { Router } from '@angular/router';
+import { OccupationService } from 'src/app/services/occupation.service';
 
 @Component({
   selector: 'app-list-stages',
@@ -12,7 +13,7 @@ export class ListStagesComponent implements OnInit {
   currentDetailsStage: any;
 
   constructor(private stageService: StageService,
-    private router: Router,
+              private router: Router
   ) { }
 
   ngOnInit() {

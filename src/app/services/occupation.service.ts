@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ConfigService } from './config.service';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StageService {
+export class OccupationService {
 
   configService: ConfigService;
 
@@ -13,15 +13,14 @@ export class StageService {
     this.configService = new ConfigService();
   }
 
-  public listStages() {
+  public listOccupations(id) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    const params = new HttpParams().set('accountID', localStorage.getItem('account_id'));
-    return this.http.get(`${this.configService.serverIp}/stages`, { headers, params });
+    return this.http.get(`${this.configService.serverIp}/occupations/${id}`, { headers });
   }
 
-  public getStage(id: number) {
+  public getOccupation(id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -31,7 +30,7 @@ export class StageService {
     return this.http.get(`${this.configService.serverIp}/stage/${id.toString()}`, { headers, params });
   }
 
-  public createStage(form: any) {
+  public createOccupation(form: any) {
     console.log(form);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -40,11 +39,10 @@ export class StageService {
       accountID: localStorage.getItem('account_id'),
       form
     };
-    return this.http.post(`${this.configService.serverIp}/create-stage`, data, { headers });
+    return this.http.post(`${this.configService.serverIp}/create-occupation`, data, { headers });
   }
 
-  public updateStage(stageId: number, form: any) {
-    console.log(form);
+  public updateOccupation(stageId: number, form: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -54,7 +52,7 @@ export class StageService {
     return this.http.put(`${this.configService.serverIp}/update-stage/${stageId.toString()}`, data, { headers });
   }
 
-  public deleteStage(stageId: number) {
+  public deleteOccupation(stageId: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
