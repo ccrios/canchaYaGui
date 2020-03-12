@@ -127,8 +127,9 @@ input:focus {
 }
 
 .divbutton {
+  margin: 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 

@@ -41,24 +41,6 @@ export class ProfileComponent implements OnInit {
     this.formData.controls['sportSpacenit'].setValue(sportSpace.sportSpace.nit);
     this.formData.controls['sportSpaceaddres'].setValue(sportSpace.sportSpace.address);
     this.formData.controls['sportSpaceName'].setValue(sportSpace.sportSpace.name);
-
-      // "sportSpace": {
-      //   "id": 0,
-      //   "sport_space_id": 1,
-      //   "sport_space_image": "",
-      //   "nit": 12345700,
-      //   "address": "calle 15 # 15-55",
-      //   "name": "La 8",
-      //   "administrator_id": 2
-      // },
-      // "administrator": {
-      //   "id": 0,
-      //   "administrator_id": 2,
-      //   "name": "Raul",
-      //   "last_name": "Ramirez",
-      //   "phone": "123",
-      //   "id_account": 1
-      // }
   }
 
   getSportSpace() {
@@ -78,8 +60,6 @@ export class ProfileComponent implements OnInit {
     }
 
     update(){
-      console.log("-----");
-      console.log(this.dataAdmin.administrator);
       let dataForm = this.formData.value;
       dataForm["adminId"] = this.dataAdmin.administrator.administrator_id;
       this.sportSpaceService.updateSportSpace(dataForm).subscribe(

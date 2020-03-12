@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-full',
@@ -8,11 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class FullComponent implements OnInit {
 
   opened: boolean;
-  constructor() {
+  rol: any;
+  name: any;
+  constructor(
+    private auth: AuthService,
+  ) {
     this.opened = true;
    }
 
   ngOnInit() {
+   this.rol = this.auth.getRol();
+   this.name = this.auth.getname();
   }
+
+
 
 }

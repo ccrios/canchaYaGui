@@ -4,6 +4,8 @@
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
     <h1>CanchaYA!</h1>
+    <div style="margin-left: auto"><h1>Bienvenido {{name}}</h1></div>
+
     <span class="menu-spacer"></span>
     <!-- <div>
       <a mat-button [routerLink]="'/accounts'"> Accounts </a>
@@ -23,7 +25,7 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    <mat-nav-list>
+    <mat-nav-list *ngIf="rol==1" >
       <button mat-menu-item [matMenuTriggerFor]="aboveMenu" style="font-size: large">Canchas</button>
       <mat-menu #aboveMenu="matMenu" yPosition="below">
         <button mat-menu-item style="font-size: large" routerLink="/stages">Crear Cancha</button>
@@ -38,6 +40,12 @@
       <a mat-list-item style="font-size: large" [routerLink]="'/reservations'"> Reservas </a>
       <a mat-list-item style="font-size: large" [routerLink]="'/profile'"> Editar Perfil </a>
       <a mat-list-item style="font-size: large" [routerLink]="'/publicity'"> Publicidad </a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="rol==2">
+      <a mat-list-item style="font-size: large" [routerLink]="'/tournaments'">Crear Torneo</a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/reservations'"> Reservas </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/profile'"> Editar Perfil </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
