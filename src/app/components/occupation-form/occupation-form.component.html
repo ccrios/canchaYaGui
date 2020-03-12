@@ -1,7 +1,7 @@
 <ngx-alerts></ngx-alerts>
 <!--Crear Ocupación-->
 <div class="container global_container" style="margin: 5%;">
-    <mat-card class="mat-elevation-z2">
+    <mat-card class="mat-elevation-z0">
         <mat-card-title style="text-align: center;">{{title}}</mat-card-title>
         <mat-card-content>
             <form role="form-group form" [formGroup]="occupationForm" method="post" class="f1" name="stageForm">
@@ -14,54 +14,12 @@
                     </div>
                     <div class="col-6 form-group">
                         <mat-form-field class="col-12">
-                            <mat-label>Tipo de Reservación</mat-label>
-                            <input matInput formControlName="reservation_type" placeholder="Tipo de Reservación">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
-                            <mat-label>Estado de Reservación</mat-label>
-                            <input matInput formControlName="reservation_status" placeholder="Estado de Reservación">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
                             <mat-label>Tipo de Juego</mat-label>
                             <input matInput formControlName="game_type" placeholder="Tipo de Juego">
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
-                            <mat-label>ID Equipo 1</mat-label>
-                            <input matInput formControlName="team1_id" placeholder="ID Equipo 1">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
-                            <mat-label>ID Equipo 2</mat-label>
-                            <input matInput formControlName="team2_id" placeholder="ID Equipo 2">
-                        </mat-form-field>
-                    </div>
-                    <!-- <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
-                            <mat-label>Tipo De Cancha</mat-label>
-                            <mat-select formControlName="stageType">
-                                <mat-option>None</mat-option>
-                                <mat-option value="1">Option 1</mat-option>
-                                <mat-option value="2">Option 2</mat-option>
-                                <mat-option value="3">Option 3</mat-option>
-                                <mat-option value="4">Option 4</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div> -->
-                    <!-- <div class="col-6 form-group">
-                        <input class="btn btn-success" type="file" (change)="uploadImage($event)">
-                    </div>   -->
-                </div>
+
                 <div class="row">
                     <div class="col-6 form-group">
                         <!-- <input matInput formControlName="start" placeholder="Ancho (m)"> -->
@@ -75,19 +33,12 @@
                             placeholder="Not set" />
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6 form-group">
-                        <mat-form-field class="col-12">
-                            <mat-label>Tipo de Ocupación</mat-label>
-                            <input matInput formControlName="occupation_type" placeholder="Tipo de Ocupación">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div style="display:flex; justify-content:flex-end;">
+                <div style="display:flex; justify-content:center;">
                     <button type="button" class="btn btn-danger" (click)="closeModal()">
                         Cancelar
                     </button>
-                    <button style="margin-left: 2%;" type="button" class="btn btn-success" (click)="sendOccupation(); closeModal()">
+                    <button style="margin-left: 2%;" type="button" class="btn btn-success"
+                        (click)="sendOccupation(); closeModal()">
                         {{btnText}}
                     </button>
                 </div>

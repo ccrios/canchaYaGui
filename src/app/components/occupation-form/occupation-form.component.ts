@@ -47,14 +47,14 @@ export class OccupationFormComponent implements OnInit {
   initForm() {
     this.occupationForm = this.formBuilder.group({
       description: ['', Validators.required],
-      reservation_type: ['', Validators.required],
-      reservation_status: ['', Validators.required],
+      reservation_type: ['ADMIN', Validators.required],
+      reservation_status: ['ACTIVO', Validators.required],
       team1_id: [0, Validators.required],
       team2_id: [0, Validators.required],
       game_type: ['', Validators.required],
       start: ['', Validators.required],
       end: ['', Validators.required],
-      occupation_type: ['', Validators.required],
+      occupation_type: ['RSERV', Validators.required],
       stage_id: [this.idStage]
     });
   }
@@ -68,14 +68,25 @@ export class OccupationFormComponent implements OnInit {
   createOccupation() {
     console.log('entre a crear');
     console.log(this.occupationForm.value);
-    this.occupationService.createOccupation(this.occupationForm.value).subscribe(res => {
-      if (res['status']) {
-        this.router.navigate(['/schedule/', this.idStage]);
-        // this.sendForm.emit({form: this.occupationForm.value});
-      } else {
-        this.alert.danger('Error al crear la ocupación!!!');
-      }
-    });
+    if (this.validateCreation()) {
+      this.occupationService.createOccupation(this.occupationForm.value).subscribe(res => {
+        if (res['status']) {
+          this.router.navigate(['/schedule/', this.idStage]);
+          // this.sendForm.emit({form: this.occupationForm.value});
+        } else {
+          this.alert.danger('Error al crear la ocupación!!!');
+        }
+      });
+    } else {
+      this.alert.danger('Creación inválida!!!');
+    }
+  }
+
+  validateCreation(): boolean {
+    const auxStart = new Date(this.occupationForm.controls.start.value);
+    const auxEnd = new Date(this.occupationForm.controls.end.value);
+    const currentDate = new Date();
+    return currentDate <= auxStart && auxStart < auxEnd;
   }
 
   editOccupation() {

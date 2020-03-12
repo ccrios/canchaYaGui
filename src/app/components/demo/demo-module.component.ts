@@ -166,8 +166,8 @@ export class DemoComponent {
         this.occupationService.listOccupations(this.id).subscribe(res => {
             if (res['status']) {
                 const result = new Array();
-                res['occupation'].forEach(element => {
-                    result.push(this.buildOccupation(element));
+                res['occupation'].forEach(occupationElement => {
+                    result.push(this.buildOccupation(occupationElement));
                 });
                 console.log('result');
                 console.log(result);
@@ -178,8 +178,10 @@ export class DemoComponent {
     }
 
     public buildOccupation(element): any {
+        const start = new Date(element.start);
+        const end = new Date(element.end);
         return {
-            title: element.occupation_type,
+            title: `${element.occupation_type} No. ${element.occupation_id} -> ${start.toLocaleTimeString()} - ${end.toLocaleTimeString()}`,
             start: new Date(element.start),
             end: new Date(element.end),
             color: colors.blue,
@@ -295,26 +297,29 @@ export class DemoComponent {
 
     loadOccupation(idOccupation) {
         this.occupationService.getOccupation(+idOccupation).subscribe(res => {
-          if (res['status']) {
-            const resOccupation = res['occupation'];
-            console.log('lo que traje', resOccupation);
-            this.occupationForm.controls.description.setValue(resOccupation.reservationInfo.description);
-            this.occupationForm.controls.reservation_type.setValue(resOccupation.reservationInfo.reservation_type);
-            this.occupationForm.controls.reservation_status.setValue(resOccupation.reservationInfo.reservation_status);
-            this.occupationForm.controls.team1_id.setValue(resOccupation.game_id.team1_id);
-            this.occupationForm.controls.team2_id.setValue(resOccupation.game_id.team2_id);
-            this.occupationForm.controls.game_type.setValue(resOccupation.game_id.game_type);
-            this.occupationForm.controls.start.setValue(resOccupation.start);
-            this.occupationForm.controls.end.setValue(resOccupation.end);
-            this.occupationForm.controls.occupation_type.setValue(resOccupation.occupation_type);
-            this.occupationForm.controls.stage_id.setValue(this.id);
-          } else {
-            this.alert.danger('Error al obtener la ocupación a editar!!!');
-            console.log('no lo traje');
-          }
+            if (res['status']) {
+                const resOccupation = res['occupation'];
+                console.log('lo que traje', resOccupation);
+                this.fillFormOccupation(resOccupation);
+            } else {
+                this.alert.danger('Error al obtener la ocupación a editar!!!');
+                console.log('no lo traje');
+            }
         });
-      }
+    }
 
+    fillFormOccupation(resOccupation) {
+        this.occupationForm.controls.description.setValue(resOccupation.reservationInfo.description);
+        this.occupationForm.controls.reservation_type.setValue(resOccupation.reservationInfo.reservation_type);
+        this.occupationForm.controls.reservation_status.setValue(resOccupation.reservationInfo.reservation_status);
+        this.occupationForm.controls.team1_id.setValue(resOccupation.game_id.team1_id);
+        this.occupationForm.controls.team2_id.setValue(resOccupation.game_id.team2_id);
+        this.occupationForm.controls.game_type.setValue(resOccupation.game_id.game_type);
+        this.occupationForm.controls.start.setValue(resOccupation.start);
+        this.occupationForm.controls.end.setValue(resOccupation.end);
+        this.occupationForm.controls.occupation_type.setValue(resOccupation.occupation_type);
+        this.occupationForm.controls.stage_id.setValue(this.id);
+    }
     addEvent(): void {
         this.isEditing = false;
         this.isCreating = true;

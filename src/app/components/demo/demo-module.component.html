@@ -4,14 +4,14 @@
             <div class="btn-group">
                 <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
                     (viewDateChange)="closeOpenMonthViewDay()">
-                    Previous
+                    Anterior
                 </div>
                 <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-                    Today
+                    Hoy
                 </div>
                 <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
                     (viewDateChange)="closeOpenMonthViewDay()">
-                    Next
+                    Siguiente
                 </div>
             </div>
         </div>
@@ -22,15 +22,15 @@
             <div class="btn-group">
                 <div class="btn btn-primary" (click)="setView(CalendarView.Month)"
                     [class.active]="view === CalendarView.Month">
-                    Month
+                    Mes
                 </div>
                 <div class="btn btn-primary" (click)="setView(CalendarView.Week)"
                     [class.active]="view === CalendarView.Week">
-                    Week
+                    Semana
                 </div>
                 <div class="btn btn-primary" (click)="setView(CalendarView.Day)"
                     [class.active]="view === CalendarView.Day">
-                    Day
+                    Día
                 </div>
             </div>
         </div>
@@ -56,9 +56,9 @@
     <br /><br /><br />
 
     <h3>
-        Edit events
+        Reservas
         <button class="btn btn-primary pull-right" (click)="addEvent()">
-            Add new
+            Agregar reserva
         </button>
         <div class="clearfix"></div>
     </h3>
@@ -67,12 +67,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Primary color</th>
-                    <th>Secondary color</th>
-                    <th>Starts at</th>
-                    <th>Ends at</th>
-                    <th>Remove</th>
+                    <th>Tipo de reserva</th>
+                    <th>Color Primario</th>
+                    <th>Color Secundario</th>
+                    <th>Empieza el</th>
+                    <th>Termina el</th>
+                    <th>Remover</th>
                 </tr>
             </thead>
 
@@ -99,7 +99,7 @@
                     </td>
                     <td>
                         <button class="btn btn-danger" (click)="deleteEvent(event)">
-                            Delete
+                            Borrar
                         </button>
                     </td>
                 </tr>
@@ -108,13 +108,13 @@
     </div>
 </div>
 <ng-template #modalContent let-close="close">
-    <div class="modal-header">
+    <!-- <div class="modal-header">
         <h5 class="modal-title">Event action occurred</h5>
         <button type="button" class="close" (click)="close()">
             <span aria-hidden="true">&times;</span>
         </button>
-    </div>
-    <div class="modal-body">
+    </div> -->
+    <div class="modal-body" style="background-color: #424242;">
         <!-- <div>
             Action:
             <pre>{{ modalData?.action }}</pre>
