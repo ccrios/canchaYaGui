@@ -27,6 +27,10 @@ export const FULL_ROUTES: Routes = [
         loadChildren: './pages/profile/profile.module#ProfileModule'
     },
     {
+      path: 'profileUser',
+      loadChildren: './pages/profile-user/profile-user.module#ProfileUserModule'
+  },
+    {
         path: 'publicity',
         loadChildren: './pages/publicity/publicity.module#PublicityModule'
     }

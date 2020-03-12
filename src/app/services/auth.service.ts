@@ -42,6 +42,11 @@ export class AuthService {
     } else {
       return out.user[0].name;
     }
+  }
+
+  getUser() {
+    const out = this.getInfo();
+    return out.user[0];
 
   }
 }

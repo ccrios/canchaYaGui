@@ -70,7 +70,8 @@ constructor(
       (data) => { // Success
          if (data['status']) {
           //this.auth.sendInfo(data);
-          this.alertService.danger('Registro Exitoso');
+          this.alertService.success('Registro Exitoso');
+          this.activeModal.dismiss();
          } else {
           this.alertService.danger('Registro fallido');
           this.formRegister.controls['password'].setValue('');

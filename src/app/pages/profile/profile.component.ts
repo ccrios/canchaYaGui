@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
           this.dataAdmin = data;
           this.generateForm(data);
          } else {
-          this.alertService.danger('No hay un servicio creado');
+          this.alertService.danger('No se encontro perfil');
          }
       },
       (error) => {
