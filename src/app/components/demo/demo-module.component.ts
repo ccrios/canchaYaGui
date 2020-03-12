@@ -188,20 +188,32 @@ export class DemoComponent {
             resizable: {
                 beforeStart: true,
                 afterEnd: true
-            }
+            },
+            id: element.occupation_id
         };
     }
 
+    // public getForm(event): void {
+    //     // this.inputValue = event.values;
+    //     console.log(event);
+    //     console.log('RECIBIDO');
+    //     console.log(event.form);
+    //     this.alert.success('Ocupación creada exitosamente!!!');
+    //     this.listOccupations();
+    // }
+
     public deleteOccupation(idToDelete) {
-        this.occupationService.listOccupations(idToDelete).subscribe(res => {
+        console.log(idToDelete);
+        this.occupationService.deleteOccupation(idToDelete).subscribe(res => {
             if (res['status']) {
+                console.log('resultado de eliminar');
                 console.log(res);
             }
         });
     }
-s
+
     public updateOccupation(idToEdit) {
-        this.occupationService.updateOccupation(idToEdit, this.occupationForm).subscribe(res => {
+        this.occupationService.updateOccupation(+idToEdit, this.occupationForm).subscribe(res => {
             if (res['status']) {
                 console.log(res);
             }
@@ -253,7 +265,6 @@ s
             return iEvent;
         });
         this.handleEvent('Dropped or resized', event);
-
     }
 
     handleEvent(action: string, event: CalendarEvent): void {
@@ -262,36 +273,73 @@ s
         console.log('event');
         console.log(event);
         if (action === 'Edited') {
-            this.updateOccupation(1);
+            this.updateOccupation(event.id);
+            this.isEditing = true;
+            this.isCreating = false;
+            this.modalData = { event, action };
+            this.modal.open(this.modalContent, { size: 'lg' });
         } else if (action === 'Deleted') {
-            this.deleteOccupation(1);
+            this.deleteOccupation(event.id);
+            this.isEditing = false;
+            this.isCreating = false;
+        } else if (action === 'Dropped or resized') {
+            this.loadOccupation(+event.id);
+            this.occupationForm.controls.start.setValue(event.start);
+            this.occupationForm.controls.end.setValue(event.end);
+            this.occupationService.updateOccupation(+event.id, this.occupationForm.value).subscribe(res => {
+                console.log('actualizado,', res);
+                this.alert.success('Editado Exitoso!');
+            });
         }
-
-        this.modalData = { event, action };
-        this.modal.open(this.modalContent, { size: 'lg' });
-        console.log(this.events);
     }
 
+    loadOccupation(idOccupation) {
+        this.occupationService.getOccupation(+idOccupation).subscribe(res => {
+          if (res['status']) {
+            const resOccupation = res['occupation'];
+            console.log('lo que traje', resOccupation);
+            this.occupationForm.controls.description.setValue(resOccupation.reservationInfo.description);
+            this.occupationForm.controls.reservation_type.setValue(resOccupation.reservationInfo.reservation_type);
+            this.occupationForm.controls.reservation_status.setValue(resOccupation.reservationInfo.reservation_status);
+            this.occupationForm.controls.team1_id.setValue(resOccupation.game_id.team1_id);
+            this.occupationForm.controls.team2_id.setValue(resOccupation.game_id.team2_id);
+            this.occupationForm.controls.game_type.setValue(resOccupation.game_id.game_type);
+            this.occupationForm.controls.start.setValue(resOccupation.start);
+            this.occupationForm.controls.end.setValue(resOccupation.end);
+            this.occupationForm.controls.occupation_type.setValue(resOccupation.occupation_type);
+            this.occupationForm.controls.stage_id.setValue(this.id);
+          } else {
+            this.alert.danger('Error al obtener la ocupación a editar!!!');
+            console.log('no lo traje');
+          }
+        });
+      }
+
     addEvent(): void {
-        this.events = [
-            ...this.events,
-            {
-                title: 'New event',
-                start: startOfDay(new Date()),
-                end: endOfDay(new Date()),
-                color: colors.red,
-                draggable: true,
-                resizable: {
-                    beforeStart: true,
-                    afterEnd: true
-                }
-            }
-        ];
+        this.isEditing = false;
+        this.isCreating = true;
+        this.modal.open(this.modalContent, { size: 'lg' });
+        // this.events = [
+        //     ...this.events,
+        //     {
+        //         title: 'New event',
+        //         start: startOfDay(new Date()),
+        //         end: endOfDay(new Date()),
+        //         color: colors.red,
+        //         draggable: true,
+        //         resizable: {
+        //             beforeStart: true,
+        //             afterEnd: true
+        //         }
+        //     }
+        // ];
+
     }
 
     deleteEvent(eventToDelete: CalendarEvent) {
         console.log('elimineeste');
         console.log(eventToDelete);
+        this.deleteOccupation(eventToDelete.id);
         this.events = this.events.filter(event => event !== eventToDelete);
     }
 

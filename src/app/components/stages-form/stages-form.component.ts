@@ -31,7 +31,6 @@ export class StagesFormComponent implements OnInit {
         this.btnText = 'Editar';
         this.getStage(this.id);
       }
-
     });
   }
 

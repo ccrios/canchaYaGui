@@ -6,17 +6,21 @@ import { materialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-alerts';
 import { OccupationFormComponent } from './occupation-form.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [OccupationFormComponent],
   imports: [
     CommonModule,
     OccupationFormRoutingModule,
     materialModule,
     FormsModule,
     ReactiveFormsModule,
-    AlertModule
+    NgbModalModule,
+    AlertModule,
+    FlatpickrModule.forRoot()
   ],
   exports: [OccupationFormComponent]
 })

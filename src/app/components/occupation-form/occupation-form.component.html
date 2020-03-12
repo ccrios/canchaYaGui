@@ -1,5 +1,5 @@
 <ngx-alerts></ngx-alerts>
-<!--Crear Cancha-->
+<!--Crear Ocupación-->
 <div class="container global_container" style="margin: 5%;">
     <mat-card class="mat-elevation-z2">
         <mat-card-title style="text-align: center;">{{title}}</mat-card-title>
@@ -8,30 +8,45 @@
                 <div class="row">
                     <div class="col-6 form-group">
                         <mat-form-field class="col-12">
-                            <input matInput formControlName="name" placeholder="Nombre">
+                            <mat-label>Descripción</mat-label>
+                            <input matInput formControlName="description" placeholder="Descripción">
                         </mat-form-field>
                     </div>
                     <div class="col-6 form-group">
                         <mat-form-field class="col-12">
-                            <input matInput formControlName="descripcion" placeholder="Descripción">
+                            <mat-label>Tipo de Reservación</mat-label>
+                            <input matInput formControlName="reservation_type" placeholder="Tipo de Reservación">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 form-group">
                         <mat-form-field class="col-12">
-                            <mat-label>Ancho</mat-label>
-                            <input matInput formControlName="width" placeholder="Ancho (m)">
+                            <mat-label>Estado de Reservación</mat-label>
+                            <input matInput formControlName="reservation_status" placeholder="Estado de Reservación">
                         </mat-form-field>
                     </div>
                     <div class="col-6 form-group">
                         <mat-form-field class="col-12">
-                            <input matInput formControlName="heigth" placeholder="Alto (m)">
+                            <mat-label>Tipo de Juego</mat-label>
+                            <input matInput formControlName="game_type" placeholder="Tipo de Juego">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>ID Equipo 1</mat-label>
+                            <input matInput formControlName="team1_id" placeholder="ID Equipo 1">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>ID Equipo 2</mat-label>
+                            <input matInput formControlName="team2_id" placeholder="ID Equipo 2">
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="col-6 form-group">
                         <mat-form-field class="col-12">
                             <mat-label>Tipo De Cancha</mat-label>
                             <mat-select formControlName="stageType">
@@ -42,16 +57,37 @@
                                 <mat-option value="4">Option 4</mat-option>
                             </mat-select>
                         </mat-form-field>
-                    </div>
+                    </div> -->
                     <!-- <div class="col-6 form-group">
                         <input class="btn btn-success" type="file" (change)="uploadImage($event)">
                     </div>   -->
                 </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <!-- <input matInput formControlName="start" placeholder="Ancho (m)"> -->
+                        <input class="form-control" type="text" mwlFlatpickr formControlName="start" [altInput]="true"
+                            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                            placeholder="Not set" />
+                    </div>
+                    <div class="col-6 form-group">
+                        <input class="form-control" type="text" mwlFlatpickr formControlName="end" [altInput]="true"
+                            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                            placeholder="Not set" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>Tipo de Ocupación</mat-label>
+                            <input matInput formControlName="occupation_type" placeholder="Tipo de Ocupación">
+                        </mat-form-field>
+                    </div>
+                </div>
                 <div style="display:flex; justify-content:flex-end;">
-                    <button type="button" class="btn btn-danger" [routerLink]="['/list-stages']">
+                    <button type="button" class="btn btn-danger" (click)="closeModal()">
                         Cancelar
                     </button>
-                    <button style="margin-left: 2%;" type="button" class="btn btn-success" (click)="sendStage()">
+                    <button style="margin-left: 2%;" type="button" class="btn btn-success" (click)="sendOccupation(); closeModal()">
                         {{btnText}}
                     </button>
                 </div>

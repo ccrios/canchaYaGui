@@ -115,18 +115,25 @@
         </button>
     </div>
     <div class="modal-body">
-        <div>
+        <!-- <div>
             Action:
             <pre>{{ modalData?.action }}</pre>
         </div>
         <div>
             Event:
             <pre>{{ modalData?.event | json }}</pre>
+        </div> -->
+        <div class="container" style="max-width: fit-content;">
+            <app-occupation-form *ngIf="isCreating"></app-occupation-form>
+            <app-occupation-form *ngIf="isEditing" [id]="modalData?.event.id">
+                <!-- (sendForm)="getForm($event)" -->
+            </app-occupation-form>
         </div>
+
     </div>
-    <div class="modal-footer">
+    <!-- <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" (click)="close()">
             OK
         </button>
-    </div>
+    </div> -->
 </ng-template>

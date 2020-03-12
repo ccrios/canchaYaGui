@@ -8,6 +8,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoComponent } from './demo-module.component';
 import { DemoUtilsModuleRoutingModule } from '../demo-utils/demo-utils-module-routing.module';
 import { AlertModule } from 'ngx-alerts';
+import { OccupationFormModule } from '../occupation-form/occupation-form.module';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { AlertModule } from 'ngx-alerts';
         DemoUtilsModuleRoutingModule,
         ReactiveFormsModule,
         AlertModule,
+        OccupationFormModule,
         FlatpickrModule.forRoot(),
         CalendarModule.forRoot({
             provide: DateAdapter,

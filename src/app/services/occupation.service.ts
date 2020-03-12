@@ -24,10 +24,7 @@ export class OccupationService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-
-    const params = new HttpParams().
-      set('accountID', localStorage.getItem('account_id'));
-    return this.http.get(`${this.configService.serverIp}/stage/${id.toString()}`, { headers, params });
+    return this.http.get(`${this.configService.serverIp}/occupation/${id.toString()}`, { headers });
   }
 
   public createOccupation(form: any) {
@@ -39,23 +36,23 @@ export class OccupationService {
       accountID: localStorage.getItem('account_id'),
       form
     };
-    return this.http.post(`${this.configService.serverIp}/create-occupation`, data, { headers });
+    return this.http.post(`${this.configService.serverIp}/occupation`, data, { headers });
   }
 
-  public updateOccupation(stageId: number, form: any) {
+  public updateOccupation(occupationID: number, form: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     const data = {
       form
     };
-    return this.http.put(`${this.configService.serverIp}/update-stage/${stageId.toString()}`, data, { headers });
+    return this.http.put(`${this.configService.serverIp}/occupation/${occupationID.toString()}`, data, { headers });
   }
 
-  public deleteOccupation(stageId: number) {
+  public deleteOccupation(occupationID: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.delete(`${this.configService.serverIp}/delete-stage/${stageId.toString()}`, { headers });
+    return this.http.delete(`${this.configService.serverIp}/occupation/${occupationID.toString()}`, { headers });
   }
 }
