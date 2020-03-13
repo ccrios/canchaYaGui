@@ -1,5 +1,12 @@
-<!-- <app-stage-card *ngFor = 'let item of stages'></app-stage-card> -->
-<!-- <app-scheduler></app-scheduler> -->
-<p>hola</p>
-
-<!-- <mwl-demo-component>Loading...</mwl-demo-component> -->
+<ngx-alerts></ngx-alerts>
+<div style="margin: 1%">
+    <div style="margin: 1%">
+        <button class="btn btn-primary" (click)="createStage()"  *ngIf="rol==1"> Crear nueva Cancha</button>
+        <div class="row">
+            <div *ngFor='let item of stages'>
+                <app-stage-card [name]="item.name" [description]="item.descripcion"
+                [width]= 'item.width' [heigth]= 'item.heigth' [id]= 'item.stage_id'></app-stage-card>
+            </div>
+        </div>
+    </div>
+</div>

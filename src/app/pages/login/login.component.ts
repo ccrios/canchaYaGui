@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
@@ -6,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { sha256, sha224 } from 'js-sha256';
 import { LanguageService } from 'src/app/services/language.service';
 import { AlertService } from 'ngx-alerts';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
 
 
 @Component({
@@ -25,6 +28,7 @@ constructor(
   private router: Router,
   public languageService: LanguageService,
   public alertService: AlertService,
+  private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -32,6 +36,11 @@ constructor(
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]]
     });
+  }
+
+  open() {
+    const modalRef = this.modalService.open(RegisterUserComponent);
+   // modalRef.componentInstance.name = 'World';
   }
 
   public getError(controlName: string): string {

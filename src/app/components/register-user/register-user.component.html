@@ -1,0 +1,98 @@
+
+<ngx-alerts></ngx-alerts>
+<section>
+  <div class="modal-body">
+
+    <div class="container ">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 form-box">
+          <form role="form" [formGroup]="formRegister">
+
+            <mat-card class="mat-elevation-z4" style="margin-top: 3%;">
+              <mat-card class="mat-elevation-z4" style="margin-top: 3%;">
+                <mat-card-title>Datos de cuenta</mat-card-title>
+                <hr>
+                <div class="errorMessage">{{getError('email')}}</div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <label for="email"><span style="color:red;font-weight: bold;">*</span>Email</label>
+                  <input formControlName="email" type="text" name="email" placeholder="Email" class="form-control"
+                    id="email">
+                  <h6 *ngIf="!formRegister.controls['email'].valid && formRegister.controls['email'].touched">
+                    Campo requerido</h6>
+                </div>
+
+                <div class="errorMessage">{{ getError('password')  }}</div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <label for="password"><span style="color:red;font-weight: bold;">*</span>Password</label>
+                  <input formControlName="password" type="password" name="password" placeholder="Password"
+                    class="form-control" id="password">
+                  <h6 *ngIf="!formRegister.controls['password'].valid && formRegister.controls['password'].touched">
+                    Campo requerido</h6>
+                </div>
+
+              </mat-card>
+              <mat-card class="mat-elevation-z4" style="margin-top: 3%;">
+                <mat-card-title>Datos de administrador</mat-card-title>
+                <hr>
+                <div class="row form-group">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="name"><span style="color:red;font-weight: bold;">*</span>Nombre</label>
+                    <input formControlName="name" type="text" name="name" placeholder="Nombre" class="form-control"
+                      id="name">
+                    <h6 *ngIf="!formRegister.controls['name'].valid && formRegister.controls['name'].touched">
+                      Campo requerido</h6>
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="lastName"><span style="color:red;font-weight: bold;">*</span>Apellidos</label>
+                    <input formControlName="lastName" type="text" name="lastName" placeholder="Apellidos"
+                      class="form-control" id="lastName">
+                    <h6 *ngIf="!formRegister.controls['lastName'].valid && formRegister.controls['lastName'].touched">
+                      Campo requerido</h6>
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="phone"><span style="color:red;font-weight: bold;">*</span>Telefono</label>
+                    <input formControlName="phone" type="number" name="phone" placeholder="Telefono"
+                      class="form-control" id="phone">
+                    <h6 *ngIf="!formRegister.controls['phone'].valid && formRegister.controls['phone'].touched">
+                      Campo requerido</h6>
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="address"><span style="color:red;font-weight: bold;">*</span>Direccion</label>
+                    <input formControlName="address" type="text" name="address" placeholder="Direccion"
+                      class="form-control" id="address">
+                    <h6 *ngIf="!formRegister.controls['address'].valid && formRegister.controls['address'].touched">
+                      Campo requerido</h6>
+                  </div>
+                </div>
+              </mat-card>
+
+              <div class="divbutton">
+                <button type="button" [disabled]="!formRegister.valid" (click)="register()">Registrar
+                </button>
+
+                <button type="button" (click)="activeModal.close('Close click')">Cancelar</button>
+
+
+              </div>
+            </mat-card>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>

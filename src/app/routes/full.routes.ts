@@ -3,48 +3,66 @@ import { Routes, RouterModule } from '@angular/router';
 export const FULL_ROUTES: Routes = [
 
 
+
     {
         path: 'stages',
-        loadChildren: './pages/stage/stage.module#StageModule'
+        loadChildren: () => import('../pages/stage/stage.module').then(m => m.StageModule)
     },
     {
         path: 'create-stage',
-        loadChildren: './components/stages-form/stages-form.module#StagesFormModule'
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
     },
     {
         path: 'edit-stage/:id',
-        loadChildren: './components/stages-form/stages-form.module#StagesFormModule'
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
+    },
+    {
+        path: 'details-stage/:id',
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
     },
     {
         path: 'list-stages',
-        loadChildren: './components/list-stages/list-stages.module#ListStagesModule'
+        loadChildren: () => import('../components/list-stages/list-stages.module').then(m => m.ListStagesModule)
     },
-    // {
-    //     path: 'tournaments',
-    //     loadChildren: './pages/tournament/tournament.module#TournamentModule'
-    // },
+    {
+        path: '',
+        loadChildren: () => import('../components/charts/charts.module').then(m => m.ChartsModule)
+    },
+
+    {
+      path: 'tournaments',
+      loadChildren: () => import('../pages/tournament/view-tournament/view-tournament.module').then(m => m.ViewTournamentModule)
+
+    },
+
     {
       path: 'createTournaments',
-      loadChildren: './pages/tournament/create-tournament/create-tournament.module#CreateTournamentModule'
+      loadChildren: () => import('../pages/tournament/create-tournament/create-tournament.module').then(m => m.CreateTournamentModule)
       },
     {
         path: 'schedules',
-        loadChildren: './pages/schedule/schedule.module#ScheduleModule'
+        loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
+    },
+    {
+        path: 'schedule/:id',
+        loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
     },
     {
         path: 'reservations',
-        loadChildren: './pages/reservation/reservation.module#ReservationModule'
+        loadChildren: () => import('../pages/reservation/reservation.module').then(m => m.ReservationModule)
     },
     {
         path: 'profile',
-        loadChildren: './pages/profile/profile.module#ProfileModule'
+        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfileModule)
     },
+    {
+      path: 'profileUser',
+      loadChildren: () => import('../pages/profile-user/profile-user.module').then(m => m.ProfileUserModule)
+
+  },
     {
         path: 'publicity',
-        loadChildren: './pages/publicity/publicity.module#PublicityModule'
-    },
-    {
-      path: 'tournaments',
-      loadChildren: './pages/tournament/view-tournament/view-tournament.module#ViewTournamentModule'
+        loadChildren: () => import('../pages/publicity/publicity.module').then(m => m.PublicityModule)
+
     }
 ];

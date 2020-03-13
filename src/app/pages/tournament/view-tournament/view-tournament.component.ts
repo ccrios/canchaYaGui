@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateTournamentComponent } from '../create-tournament/create-tournament.component';
 import { ViewTournamentService } from 'src/app/services/view-tournament.service';
 import {MatPaginator} from '@angular/material/paginator';
+import { ViewDetailTournamentComponent } from '../view-detail-tournament/view-detail-tournament.component';
 
 @Component({
   selector: 'app-view-tournament',
@@ -10,8 +11,11 @@ import {MatPaginator} from '@angular/material/paginator';
   styleUrls: ['./view-tournament.component.scss']
 })
 export class ViewTournamentComponent implements OnInit {
-  @ViewChild(MatPaginator, {static:true}) paginator : MatPaginator;
-  viewTournaments: any = [];
+  @ViewChild(MatPaginator, {static: true}) paginatorNoStarting: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginatorActive: MatPaginator;
+  viewTournamentsNoStarting: any = [];
+  viewTournamentsActive: any = [];
+  // tslint:disable-next-line: max-line-length
   tournamentColumns: string[] = ['tournament_id', 'tournament_name', 'init_date', 'quantity_team', 'registration_payment', 'tournament_prize'];
   constructor(
     public matDialog: MatDialog,
@@ -19,19 +23,28 @@ export class ViewTournamentComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.viewTournaments.paginator = this.paginator;
+    this.viewTournamentsNoStarting.paginator = this.paginatorNoStarting;
     this.viewTournamentService.viewTournamentNoStarting(1).subscribe(
       (response) => {
-        this.viewTournaments = response['tournamentNoStarting'].tournamentView;
+        this.viewTournamentsNoStarting = response['tournamentNoStarting'].tournamentView;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    this.viewTournamentsActive.paginator = this.paginatorActive;
+    this.viewTournamentService.viewTournamentActive(1).subscribe(
+      (response) => {
+        this.viewTournamentsActive = response['tournamentActive'].tournamentView;
       },
       (error) => {
         console.error(error);
       }
     );
   }
-  openModal(){
+  openModalCreateTournament(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.id = "create-tournament-component";
     dialogConfig.height = "80vh";
     dialogConfig.width = '800px';
@@ -39,5 +52,16 @@ export class ViewTournamentComponent implements OnInit {
     const modalDialog = this.matDialog.open(CreateTournamentComponent, dialogConfig);
 
   }
+  openModalViewDetailTournament(id: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.id = "view-detail-tournament-component";
+    dialogConfig.height = "80vh";
+    dialogConfig.width = '600px';
+    dialogConfig.data = {idTournaent: id};
 
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(ViewDetailTournamentComponent, dialogConfig);
+
+  }
 }

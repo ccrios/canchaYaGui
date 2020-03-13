@@ -1,1 +1,132 @@
-<p>view-detail-tournament works!</p>
+<div id="modal-content-wrapper"  >
+  <header id="modal-header" >
+
+  <div>
+    <button mat-raised-button class="close" id = "close-button" aria-label="Cerrar" (click)="closeModal()">X</button>
+  </div>
+  <div>
+    <h1 *ngIf="show == 1" id="modal-title">Detalle Torneo</h1>
+    <h1 *ngIf="show == 2" id="modal-title">Ingrese el correo del participante</h1>
+    <h1 *ngIf="show == 3" id="modal-title">Ingresar nuevo usuario</h1>
+    <h1 *ngIf="show == 4" id="modal-title" >Confirmar registro participante</h1>
+  </div>
+  </header>
+  <section id="modal-body">
+    <!--Div Detalles torneo -->
+    <div *ngIf="show == 1" >
+      <mat-card> <h5>Nombre del torneo</h5>
+        <p>{{viewDetailTournament.tournament_name}}</p>
+      </mat-card>
+      <br>
+      <mat-card> <h5>Id del torneo</h5>
+        <p>{{viewDetailTournament.tournament_id}}</p>
+      </mat-card>
+      <br>
+      <mat-card> <h5>Fecha de inicio</h5>
+        <p>{{viewDetailTournament.init_date}}</p>
+      </mat-card>
+      <br>
+      <mat-card>  <h5>Equipos registrados</h5>
+        <p>0000</p>
+      </mat-card>
+      <br>
+      <mat-card>  <h5>Limite de equipos</h5>
+        <p>{{viewDetailTournament.quantity_team}}</p>
+      </mat-card>
+      <br>
+      <mat-card>  <h5>Costo de inscripcion</h5>
+        <p>{{viewDetailTournament.registration_payment}}</p>
+      </mat-card>
+      <br>
+      <mat-card>  <h5>Premio</h5>
+        <p>{{viewDetailTournament.tournament_prize}}</p>
+      </mat-card>
+    </div>
+    <!--Div verificar correo -->
+    <div *ngIf="show == 2">
+      <br>
+      <form [formGroup]="formVerifyEmail" class="form" (ngSubmit)="verifyEmail()">
+        <input  type="email" formControlName="email" class="form-control" id="email" name="email" ngModel [email]="true">
+        <br>
+        <button mat-raised-button class="btn btn-primary"  type="submit">Ingresar nuevo participante</button>
+      </form>
+      <br>
+    </div>
+    <!--Div Crear nuevo usuario -->
+    <div *ngIf="show == 3">
+      <form [formGroup]="formCreateNewUser" class="form" (ngSubmit)="createNewUser()">
+
+        <div class="form-group">
+          <label for="name">Ingrese el nombre:</label>
+          <input type="text" formControlName="name" placeholder="Nombre" name="name" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Ingrese el apellido:</label>
+          <input type="text" formControlName="lastName" placeholder="Nombre" name="lastName" class="form-control" id="lastName">
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefono celular:</label>
+          <input type="number" formControlName="phone" placeholder="Nombre" name="phone" class="form-control" id="phone">
+        </div>
+        <div class="form-group">
+          <label for="address">Ingrese la direccion:</label>
+          <input type="text" formControlName="address" placeholder="Nombre" name="address" class="form-control" id="address">
+        </div>
+        <div class="form-group">
+          <label for="email">Ingrese el correo electronico:</label>
+          <input type="password" formControlName="email" placeholder="Nombre" name="email" class="form-control" id="email">
+        </div>
+        <div>
+          <button type="submit" mat-button mat-raised-button color="grey" >Crear nuevo usuario</button>
+        </div>
+
+    </form>
+    </div>
+
+    <!--div registrar participante -->
+    <div *ngIf="show == 4" >
+      <mat-card>
+        <h5>Nombre participante</h5>
+        <p>{{infoPerson.name}}</p><p>{{infoPerson.last_name}}</p>
+      </mat-card>
+      <mat-card>
+        <h5>Telefono participante</h5>
+        <p>{{infoPerson.phone}}</p>
+      </mat-card>
+      <mat-card>
+        <h5>Correo participante</h5>
+        <p>{{infoPerson.email}}</p>
+      </mat-card>
+      <mat-card>
+        <h5>Torneo de registro</h5>
+        <p>{{viewDetailTournament.tournament_name}}</p>
+      </mat-card>
+      <mat-card>
+        <h5>Costo registro</h5>
+        <p>{{viewDetailTournament.registration_payment}}</p>
+      </mat-card>
+
+      <mat-card class="mat-card" >
+        <form [formGroup]="formTeamName" class="form" (ngSubmit)="registrarParticipanteTorneo()" id="formTeamName">
+          <div class="form-group">
+            <label for="teamName">Ingrese el nombre de su equipo:</label>
+            <input type="text" formControlName="teamName" placeholder="teamName" name="teamName" class="form-control" id="teamName">
+          </div>
+
+          </form>
+      </mat-card>
+      <mat-card>
+        <mat-checkbox [(ngModel)]="pagaRegistroTorneo">¿Pagó registro?</mat-checkbox>
+      </mat-card>
+
+    </div>
+
+</section>
+  <mat-divider class="divider"></mat-divider>
+  <footer id="modal-footer" >
+    <button *ngIf= "show == 2" mat-mat-raised-button class="btn btn-primary" (click)="returnToViesDetailTournament()">atras</button>
+    <button *ngIf= "show == 1" mat-raised-button class="btn btn-primary" type="submit" form="formTeamName" (click)="abrirVistaRegistrarParticipante()">Ingresar nuevo participante</button>
+    <button *ngIf= "show == 4" mat-raised-button class="btn btn-primary"  (click)="registrarParticipanteTorneo()">Registrar</button>
+    <button  *ngIf= "show == 1" mat-raised-button class="btn btn-primary" (click)="programarJuegoTorneo()">Programar juego</button>
+  </footer>
+</div>

@@ -6,8 +6,7 @@ import { ListStagesComponent } from './list-stages.component';
 import { materialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StageCardModule } from '../stage-card/stage-card.module';
-import { SchedulerModule } from '../scheduler/scheduler.module';
-
+import { AlertModule } from 'ngx-alerts';
 
 @NgModule({
   declarations: [ListStagesComponent],
@@ -18,7 +17,7 @@ import { SchedulerModule } from '../scheduler/scheduler.module';
     FormsModule,
     ReactiveFormsModule,
     StageCardModule,
-    SchedulerModule
+    AlertModule
   ],
   exports: [
     ListStagesComponent

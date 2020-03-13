@@ -2,11 +2,16 @@
 that have an id of `modal-component` */
 /* https://stackoverflow.com/a/48689004/9263761 */
 
-mat-dialog-container#create-tournament-component {
-  border: 3px solid #262626;
-  border-radius: 11px;
-  background-color: #1a1a1a;
+.mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
 }
+
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+
 #logout-button {
   color: white;
   background-color: #4b4b4b;
@@ -29,6 +34,11 @@ body {
 that have an id of `modal-component` */
 /* https://stackoverflow.com/a/48689004/9263761 */
 mat-dialog-container#create-tournament-component {
+  border: 3px solid #262626;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+}
+mat-dialog-container#view-detail-tournament-component {
   border: 3px solid #262626;
   border-radius: 11px;
   background-color: #1a1a1a;

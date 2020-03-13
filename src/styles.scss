@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -6,3 +7,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 $color-principal: #7b1fa2;
 $color-complementario1: #734BAF ;
 $color-complementario2:#734BAFb0;
+
+.cal-time, .cal-header, .cal-day-number {
+    color: black;
+}
+
+table thead th {
+    color: white;
+}

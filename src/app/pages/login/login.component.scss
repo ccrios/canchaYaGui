@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css?family=Numans");
 @import '~src/styles';
 // $color-green-principal: #87af4b;
@@ -127,8 +128,9 @@ input:focus {
 }
 
 .divbutton {
+  margin: 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 

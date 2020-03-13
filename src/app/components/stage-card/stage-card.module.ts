@@ -5,6 +5,7 @@ import { StageCardRoutingModule } from './stage-card-routing.module';
 import { StageCardComponent } from './stage-card.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { materialModule } from 'src/app/material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { materialModule } from 'src/app/material.module';
     StageCardRoutingModule,
     materialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
+
   ],
   exports: [
     StageCardComponent

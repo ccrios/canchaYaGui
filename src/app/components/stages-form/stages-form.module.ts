@@ -5,6 +5,7 @@ import { StagesFormRoutingModule } from './stages-form-routing.module';
 import { StagesFormComponent } from './stages-form.component';
 import { materialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertModule } from 'ngx-alerts';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StagesFormRoutingModule,
     materialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule
   ]
 })
 export class StagesFormModule { }
