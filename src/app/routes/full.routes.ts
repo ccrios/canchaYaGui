@@ -27,6 +27,10 @@ export const FULL_ROUTES: Routes = [
         loadChildren: () => import('../components/list-stages/list-stages.module').then(m => m.ListStagesModule)
     },
     {
+        path: '',
+        loadChildren: () => import('../components/charts/charts.module').then(m => m.ChartsModule)
+    },
+    {
         path: 'tournaments',
         loadChildren: () => import('../pages/tournament/tournament.module').then(m => m.TournamentModule)
     },
