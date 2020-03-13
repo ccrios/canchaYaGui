@@ -15,6 +15,6 @@ export class ViewTournamentService {
   return this.Http.get(this.configService.serverIp.concat('/apiViewTournamentNoStarting?id=' + idAdministrator));
   }
   viewTournamentActive(idAdministrator) {
-    return this.Http.get(this.configService.serverIp.concat('/apiViewTournament?id=' + idAdministrator));
+    return this.Http.get(this.configService.serverIp.concat('/apiViewTournamentActive?id=' + idAdministrator));
     }
 }

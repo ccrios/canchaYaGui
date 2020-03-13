@@ -28,9 +28,9 @@ export class CreateTournamentComponent implements OnInit {
       initDate: ['', Validators.required],
       administratorId : 1,
     });
+
   }
   createTournament() {
-
     this.createTournamentService.createTournament(this.formCreateTournament.value).subscribe(
       (response) => {
         console.log(response);
