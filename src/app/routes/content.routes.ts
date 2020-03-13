@@ -1,5 +1,6 @@
 
 import {Routes, RouterModule} from '@angular/router';
+import { TestComponent } from '../components/test/test.component';
 
 export const CONTENT_ROUTES: Routes = [
 

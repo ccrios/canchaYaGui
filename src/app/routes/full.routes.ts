@@ -2,10 +2,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const FULL_ROUTES: Routes = [
 
-    {
-        path: 'test',
-        loadChildren: () => import('../pages/login/login.module').then(m => m.LoginModule)
-    },
+
+
     {
         path: 'stages',
         loadChildren: () => import('../pages/stage/stage.module').then(m => m.StageModule)
@@ -31,9 +29,14 @@ export const FULL_ROUTES: Routes = [
         loadChildren: () => import('../components/charts/charts.module').then(m => m.ChartsModule)
     },
     {
-        path: 'tournaments',
-        loadChildren: () => import('../pages/tournament/tournament.module').then(m => m.TournamentModule)
+      path: 'tournaments',
+      loadChildren: './pages/tournament/view-tournament/view-tournament.module#ViewTournamentModule'
     },
+    {
+      path: 'createTournaments',
+      loadChildren: './pages/tournament/create-tournament/create-tournament.module#CreateTournamentModule'
+      },
+
     {
         path: 'schedules',
         loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
