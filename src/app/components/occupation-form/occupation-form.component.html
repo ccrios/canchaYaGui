@@ -1,0 +1,49 @@
+<ngx-alerts></ngx-alerts>
+<!--Crear Ocupación-->
+<div class="container global_container" style="margin: 5%;">
+    <mat-card class="mat-elevation-z0">
+        <mat-card-title style="text-align: center;">{{title}}</mat-card-title>
+        <mat-card-content>
+            <form role="form-group form" [formGroup]="occupationForm" method="post" class="f1" name="stageForm">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>Descripción</mat-label>
+                            <input matInput formControlName="description" placeholder="Descripción">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-group">
+                        <mat-form-field class="col-12">
+                            <mat-label>Tipo de Juego</mat-label>
+                            <input matInput formControlName="game_type" placeholder="Tipo de Juego">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <!-- <input matInput formControlName="start" placeholder="Ancho (m)"> -->
+                        <input class="form-control" type="text" mwlFlatpickr formControlName="start" [altInput]="true"
+                            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                            placeholder="Not set" />
+                    </div>
+                    <div class="col-6 form-group">
+                        <input class="form-control" type="text" mwlFlatpickr formControlName="end" [altInput]="true"
+                            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                            placeholder="Not set" />
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:center;">
+                    <button type="button" class="btn btn-danger" (click)="closeModal()">
+                        Cancelar
+                    </button>
+                    <button style="margin-left: 2%;" type="button" class="btn btn-success"
+                        (click)="sendOccupation(); closeModal()">
+                        {{btnText}}
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

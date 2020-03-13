@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,6 +11,7 @@ export class AuthService {
   sendInfo(data) {
     localStorage.setItem('account', JSON.stringify(data['Account']['Account']));
     localStorage.setItem('token', JSON.stringify(data['Account']['token']));
+    localStorage.setItem('account_id' , data['Account']['Account']['account_id']);
   }
 
   getInfo() {

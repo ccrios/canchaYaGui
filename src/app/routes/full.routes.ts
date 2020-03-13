@@ -4,27 +4,51 @@ export const FULL_ROUTES: Routes = [
 
     {
         path: 'test',
-        loadChildren: './pages/login/login.module#LoginModule'
+        loadChildren: () => import('../pages/login/login.module').then(m => m.LoginModule)
     },
     {
         path: 'stages',
-        loadChildren: './pages/stage/stage.module#StageModule'
+        loadChildren: () => import('../pages/stage/stage.module').then(m => m.StageModule)
+    },
+    {
+        path: 'create-stage',
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
+    },
+    {
+        path: 'edit-stage/:id',
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
+    },
+    {
+        path: 'details-stage/:id',
+        loadChildren: () => import('../components/stages-form/stages-form.module').then(m => m.StagesFormModule)
+    },
+    {
+        path: 'list-stages',
+        loadChildren: () => import('../components/list-stages/list-stages.module').then(m => m.ListStagesModule)
+    },
+    {
+        path: '',
+        loadChildren: () => import('../components/charts/charts.module').then(m => m.ChartsModule)
     },
     {
         path: 'tournaments',
-        loadChildren: './pages/tournament/tournament.module#TournamentModule'
+        loadChildren: () => import('../pages/tournament/tournament.module').then(m => m.TournamentModule)
     },
     {
         path: 'schedules',
-        loadChildren: './pages/schedule/schedule.module#ScheduleModule'
+        loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
+    },
+    {
+        path: 'schedule/:id',
+        loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.ScheduleModule)
     },
     {
         path: 'reservations',
-        loadChildren: './pages/reservation/reservation.module#ReservationModule'
+        loadChildren: () => import('../pages/reservation/reservation.module').then(m => m.ReservationModule)
     },
     {
         path: 'profile',
-        loadChildren: './pages/profile/profile.module#ProfileModule'
+        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfileModule)
     },
     {
       path: 'profileUser',
@@ -32,6 +56,6 @@ export const FULL_ROUTES: Routes = [
   },
     {
         path: 'publicity',
-        loadChildren: './pages/publicity/publicity.module#PublicityModule'
+        loadChildren: () => import('../pages/publicity/publicity.module').then(m => m.PublicityModule)
     }
 ];

@@ -17,7 +17,6 @@ import { AlertModule } from 'ngx-alerts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { materialModule } from 'src/app/material.module';
 import { TestComponent } from './components/test/test.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,13 +40,13 @@ import { TestComponent } from './components/test/test.component';
         useFactory: (http: HttpClient) => {
           return new TranslateHttpLoader(http, './assets/i18n/', '.json');
         },
-        deps: [ HttpClient ]
+        deps: [HttpClient]
       }
     })
     ,
     // tslint:disable-next-line: max-line-length
     // Specify your library as an import (set timeout to -1 for unlimited timeout, the message can only be closed by the user clicking on it)
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
+    AlertModule.forRoot({ maxMessages: 5, timeout: 5000, position: 'right' }),
 
   ],
   exports: [

@@ -1,0 +1,83 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{name}}</mat-card-title>
+    <mat-card-subtitle>Información</mat-card-subtitle>
+  </mat-card-header>
+  <div class="img">
+    <img mat-card-image src="../../../assets/images/{{name}}.jpg" alt="Photo of Stage">
+  </div>
+  <mat-card-content>
+    <p>
+      {{description}}
+    </p>
+  </mat-card-content>
+    <div class="row">
+      <button mat-button class="col-lg-4" (click)="getStage(this.id,content)">Ver</button>
+      <button mat-button class="col-lg-4" (click)='editStage()'>Editar</button>
+      <button mat-button class="col-lg-4" (click)='viewSchedule()'>Horario</button>
+    </div>
+</mat-card>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Detalles de la cancha</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-card class="mat-elevation-z2">
+      <mat-card-content>
+        <form role="form-group form" [formGroup]="stageForm" method="post" class="f1" name="stageForm">
+          <div class="row">
+            <div class="col-6 form-group">
+              <mat-form-field class="col-12">
+                <input matInput formControlName="name" placeholder="Nombre">
+              </mat-form-field>
+            </div>
+            <div class="col-6 form-group">
+              <mat-form-field class="col-12">
+                <input matInput formControlName="descripcion" placeholder="Descripción">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 form-group">
+              <mat-form-field class="col-12">
+                <mat-label>Ancho</mat-label>
+                <input matInput formControlName="width" placeholder="Ancho (m)">
+              </mat-form-field>
+            </div>
+            <div class="col-6 form-group">
+              <mat-form-field class="col-12">
+                <input matInput formControlName="heigth" placeholder="Alto (m)">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 form-group">
+              <mat-form-field class="col-12">
+                <mat-label>Tipo De Cancha</mat-label>
+                <mat-select formControlName="stageType">
+                  <mat-option>None</mat-option>
+                  <mat-option value="1">Fútbol</mat-option>
+                  <mat-option value="2">Baloncesto</mat-option>
+                  <mat-option value="3">Tenis</mat-option>
+                  <mat-option value="4">Voleibol</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- <div class="col-6 form-group">
+                  <input class="btn btn-success" type="file" (change)="uploadImage($event)">
+              </div>   -->
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)=" modal.close('Save click'); deleteStage();">Eliminar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Aceptar</button>
+  </div>
+</ng-template>

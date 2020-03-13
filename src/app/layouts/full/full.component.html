@@ -1,3 +1,4 @@
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button>
@@ -26,17 +27,10 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <mat-nav-list *ngIf="rol==1" >
-      <button mat-menu-item [matMenuTriggerFor]="aboveMenu" style="font-size: large">Canchas</button>
-      <mat-menu #aboveMenu="matMenu" yPosition="below">
-        <button mat-menu-item style="font-size: large" routerLink="/stages">Crear Cancha</button>
-        <button mat-menu-item style="font-size: large" routerLink="/stages">Listar Canchas</button>
-      </mat-menu>
-      <button mat-menu-item [matMenuTriggerFor]="belowMenu" style="font-size: large">Torneros</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item style="font-size: large" routerLink="/tournaments">Crear Torneo</button>
-        <button mat-menu-item style="font-size: large" routerLink="/tournaments">Listar Torneos</button>
-      </mat-menu>
-      <a mat-list-item style="font-size: large" [routerLink]="'/schedules'"> Horarios </a>
+
+      <a mat-list-item style="font-size: large" [routerLink]="'/'"> Dashboard </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/list-stages'"> Canchas </a>
+      <a mat-list-item style="font-size: large" [routerLink]="'/tournaments'"> Torneos </a>
       <a mat-list-item style="font-size: large" [routerLink]="'/reservations'"> Reservas </a>
       <a mat-list-item style="font-size: large" [routerLink]="'/profile'"> Editar Perfil </a>
       <a mat-list-item style="font-size: large" [routerLink]="'/publicity'"> Publicidad </a>
@@ -54,3 +48,4 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

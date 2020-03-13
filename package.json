@@ -15,7 +15,8 @@
     "@angular/cdk": "~8.2.3",
     "@angular/common": "~8.1.2",
     "@angular/compiler": "~8.1.2",
-    "@angular/core": "~8.1.2",
+    "@angular/core": "8.2.14",
+    "core-js": "2.6.9",
     "@angular/forms": "~8.1.2",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.1.2",
@@ -32,7 +33,16 @@
     "ngx-alerts": "^4.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "angular-draggable-droppable": "4.3.10",
+    "angular-resizable-element": "3.3.0",
+    "date-fns": "2.10.0",
+    "angular-calendar": "0.28.5",
+    "@ng-bootstrap/ng-bootstrap": "5.0.0",
+    "rrule": "2.6.4",
+    "calendar-utils": "0.7.0",
+    "flatpickr": "4.6.3",
+    "angularx-flatpickr": "6.3.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.2",
