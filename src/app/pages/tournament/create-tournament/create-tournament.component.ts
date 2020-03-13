@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { CreateTournamentService } from 'src/app/services/create-tournament.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class CreateTournamentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private createTournamentService: CreateTournamentService,
-    public dialogRef: MatDialogRef<CreateTournamentComponent>
+    public dialogRef: MatDialogRef<CreateTournamentComponent>,
+    private auth: AuthService,
     ) {}
 
 
@@ -26,7 +28,7 @@ export class CreateTournamentComponent implements OnInit {
       registrationPayment: ['', [Validators.required, Validators.min(5000)]],
       tournamentPrize: ['', [Validators.required, Validators.min(20000)]],
       initDate: ['', Validators.required],
-      administratorId : 1,
+      administratorId : this.auth.getAdmin(),
     });
 
   }

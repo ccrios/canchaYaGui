@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,6 +23,10 @@ export class FullComponent implements OnInit {
   ngOnInit() {
    this.rol = this.auth.getRol();
    this.name = this.auth.getname();
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

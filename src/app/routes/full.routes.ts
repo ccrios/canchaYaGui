@@ -30,11 +30,12 @@ export const FULL_ROUTES: Routes = [
     },
     {
       path: 'tournaments',
-      loadChildren: './pages/tournament/view-tournament/view-tournament.module#ViewTournamentModule'
+      loadChildren: () => import('../pages/tournament/view-tournament/view-tournament.module').then(m => m.ViewTournamentModule)
+
     },
     {
       path: 'createTournaments',
-      loadChildren: './pages/tournament/create-tournament/create-tournament.module#CreateTournamentModule'
+      loadChildren: () => import('../pages/tournament/create-tournament/create-tournament.module').then(m => m.CreateTournamentModule)
       },
 
     {
@@ -55,7 +56,8 @@ export const FULL_ROUTES: Routes = [
     },
     {
       path: 'profileUser',
-      loadChildren: './pages/profile-user/profile-user.module#ProfileUserModule'
+      loadChildren: () => import('../pages/profile-user/profile-user.module').then(m => m.ProfileUserModule)
+
   },
     {
         path: 'publicity',

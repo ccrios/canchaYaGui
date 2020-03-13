@@ -26,6 +26,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OccupationService } from 'src/app/services/occupation.service';
 import { AlertService } from 'ngx-alerts';
+import { AuthService } from 'src/app/services/auth.service';
 
 const colors: any = {
     red: {
@@ -54,6 +55,8 @@ export class DemoComponent {
     view: CalendarView = CalendarView.Month;
 
     CalendarView = CalendarView;
+
+
 
     viewDate: Date = new Date();
 
@@ -131,12 +134,14 @@ export class DemoComponent {
     occupationID;
     isCreating: boolean = false;
     isEditing: boolean = false;
+    rol: any;
     public occupationForm: FormGroup;
     constructor(private modal: NgbModal,
         private activatedRoute: ActivatedRoute,
         private formBuilder: FormBuilder,
         private occupationService: OccupationService,
-        private alert: AlertService) {
+        private alert: AlertService,
+        private auth: AuthService) {
         this.activatedRoute.params.subscribe(params => {
             this.id = params.id;
             if (this.id !== undefined) {
@@ -145,6 +150,7 @@ export class DemoComponent {
             }
         });
         // this.createOccupation();
+        this.rol = this.auth.getRol();
         this.listOccupations();
     }
 

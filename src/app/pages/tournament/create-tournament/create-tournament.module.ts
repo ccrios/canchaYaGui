@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { materialModule } from 'src/app/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
-  declarations: [CreateTournamentComponent],
+  declarations: [],
   imports: [
     CommonModule,
     CreateTournamentRoutingModule,

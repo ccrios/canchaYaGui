@@ -28,6 +28,8 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('account');
+    localStorage.removeItem('token');
+    localStorage.removeItem('account_id');
     this.myRoute.navigate(["login"]);
   }
 
@@ -44,6 +46,12 @@ export class AuthService {
     } else {
       return out.user[0].name;
     }
+  }
+
+  getAdmin() {
+    const out = this.getInfo();
+    return out.administrator[0].account_id;
+
   }
 
   getUser() {

@@ -1,7 +1,7 @@
 <ngx-alerts></ngx-alerts>
 <div style="margin: 1%">
     <div style="margin: 1%">
-        <button class="btn btn-primary" (click)="createStage()"> Crear nueva Cancha</button>
+        <button class="btn btn-primary" (click)="createStage()"  *ngIf="rol==1"> Crear nueva Cancha</button>
         <div class="row">
             <div *ngFor='let item of stages'>
                 <app-stage-card [name]="item.name" [description]="item.descripcion"
